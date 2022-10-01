@@ -14,6 +14,9 @@ onready var spawns := get_tree().get_nodes_in_group("defect_spawn")
 onready var spawn_cooldown := initial_peace_time
 onready var harder_cooldown := initial_peace_time + harder_spawn_time_after
 
+func _ready() -> void:
+	get_tree().call_group("difficulty_subscriber", "_on_difficulty_updated", self)
+
 func _process(delta: float) -> void:
 	process_spawn(delta)
 	process_harder_difficulty(delta)
@@ -35,6 +38,7 @@ func process_harder_difficulty(delta: float) -> void:
 			new_defect_spawn_time_min - harder_spawn_time_difference,
 			hardest_spawn_time
 		)
+		get_tree().call_group("difficulty_subscriber", "_on_difficulty_updated", self)
 
 func spawn_defect() -> void:
 	var current_defects := get_tree().get_nodes_in_group("defect")

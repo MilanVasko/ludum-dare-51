@@ -1,9 +1,12 @@
 extends Control
 
+const DefectSpawner = preload("res://defect_spawner/defect_spawner.gd")
+
 onready var time_value = $TopPanel/Rows/Time/Value
 onready var customer_satisfaction_value = $TopPanel/Rows/CustomerSatisfaction/Value
 onready var money_value = $MoneyPanel/Money/Value
 onready var new_employee_button = $NewEmployee
+onready var difficulty_value = $DifficultyPanel/Value
 
 func _ready() -> void:
 	new_employee_button.text = "+1 New employee (" + str(find_employee_cost()) + " coins)"
@@ -31,3 +34,15 @@ func find_employee_cost() -> float:
 	var game_states := get_tree().get_nodes_in_group("game_state")
 	assert(game_states.size() == 1)
 	return game_states[0].employee_cost
+
+func _on_difficulty_updated(defect_spawner: DefectSpawner) -> void:
+	difficulty_value.text = \
+		"initial_peace_time: " + str(defect_spawner.initial_peace_time) + "\n" + \
+		"new_defect_spawn_time_min: " + str(defect_spawner.new_defect_spawn_time_min) + "\n" + \
+		"new_defect_spawn_time_range: " + str(defect_spawner.new_defect_spawn_time_range) + "\n" + \
+		"harder_spawn_time_after: " + str(defect_spawner.harder_spawn_time_after) + "\n" + \
+		"harder_spawn_time_difference: " + str(defect_spawner.harder_spawn_time_difference) + "\n" + \
+		"hardest_spawn_time: " + str(defect_spawner.hardest_spawn_time) + "\n" + \
+		"severity_min: " + str(defect_spawner.severity_min) + "\n" + \
+		"severity_max: " + str(defect_spawner.severity_max) + "\n"
+
