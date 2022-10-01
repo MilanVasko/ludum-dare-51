@@ -30,5 +30,5 @@ func move_to(global_target_position: Vector2) -> void:
 	current_travel_index = 0
 
 func find_path_to(global_target_position: Vector2) -> Array:
-	print("Finding path")
-	return [test_target_node.global_position]
+	var waypoints := get_tree().get_nodes_in_group("waypoint")
+	return [Global.find_projected_waypoint(waypoints, test_target_node.global_position)]

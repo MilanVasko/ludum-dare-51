@@ -110,7 +110,7 @@ position = Vector2( -1682, -2228 )
 scale = Vector2( 5, 1 )
 
 [node name="Defect" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1811, -355 )
+position = Vector2( -1721, -357 )
 
 [node name="Defect2" parent="." instance=ExtResource( 4 )]
 position = Vector2( -1573, -362 )
