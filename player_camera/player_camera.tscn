@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://player_camera/player_camera.gd" type="Script" id=1]
+
+[node name="PlayerCamera" type="Camera2D" groups=["defect_click_subscriber", "employee_click_subscriber"]]
+position = Vector2( 292, 221 )
+current = true
+zoom = Vector2( 2, 2 )
+script = ExtResource( 1 )
+min_zoom = Vector2( 1, 1 )
+max_zoom = Vector2( 10, 10 )

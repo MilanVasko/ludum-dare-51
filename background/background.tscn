@@ -1,16 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://white_square.png" type="Texture" id=1]
-[ext_resource path="res://employee/employee.gd" type="Script" id=2]
+[ext_resource path="res://background/background.gd" type="Script" id=2]
 [ext_resource path="res://clickable_sprite.gd" type="Script" id=3]
 
-[node name="Employee" type="Node2D"]
+[node name="Background" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.0705882, 0.54902, 0.054902, 1 )
-position = Vector2( 0, -100 )
-scale = Vector2( 100, 200 )
+scale = Vector2( 100, 100 )
 texture = ExtResource( 1 )
 script = ExtResource( 3 )
 consume_input = true

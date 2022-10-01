@@ -5,6 +5,8 @@ const SPEED := 500.0
 
 export(Global.DefectType) var target_defect_type: int
 
+onready var sprite = $Sprite
+
 var path_to_travel := []
 var current_travel_index := -1
 
@@ -93,3 +95,12 @@ func create_initial_waypoint() -> Waypoint:
 	var result := Waypoint.new()
 	result.neighbours = [waypoint_a.get_path(), waypoint_b.get_path()]
 	return result
+
+func _on_sprite_clicked(_event: InputEventMouseButton) -> void:
+	get_tree().call_group("employee_click_subscriber", "_on_employee_selected", self)
+
+func set_selected(selected: bool) -> void:
+	sprite.modulate.a = 0.5 if selected else 1.0
+
+func is_selected() -> bool:
+	return sprite.modulate < 0.99
