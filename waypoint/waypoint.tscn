@@ -1,3 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://waypoint/waypoint.gd" type="Script" id=1]
 
 [node name="Waypoint" type="Position2D" groups=["waypoint"]]
+script = ExtResource( 1 )

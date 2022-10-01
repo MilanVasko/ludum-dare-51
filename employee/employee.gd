@@ -10,7 +10,8 @@ var path_to_travel := []
 var current_travel_index := -1
 
 func _ready() -> void:
-	print("Current position:", global_position)
+	print("Current position: ", global_position)
+	print("Test target node: ", test_target_node.global_position)
 	move_to(test_target_node.global_position)
 
 func _process(delta: float) -> void:
@@ -30,4 +31,4 @@ func move_to(global_target_position: Vector2) -> void:
 
 func find_path_to(global_target_position: Vector2) -> Array:
 	print("Finding path")
-	return [Vector2(-500.0, 0.0), Vector2(300, 100.0), Vector2(0.0, 0.0)]
+	return [test_target_node.global_position]

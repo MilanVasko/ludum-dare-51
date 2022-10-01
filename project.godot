@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Defect",
+"language": "GDScript",
+"path": "res://defect/defect.gd"
+} ]
+_global_script_class_icons={
+"Defect": ""
+}
+
 [application]
 
 config/name="Ludum Dare 51"
