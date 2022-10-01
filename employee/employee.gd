@@ -1,20 +1,12 @@
 extends Node2D
 
 const Waypoint = preload("res://waypoint/waypoint.gd")
-
-export(NodePath) var test_target_node_path
-onready var test_target_node: Node2D = get_node(test_target_node_path)
 const SPEED := 500.0
 
 export(Global.DefectType) var target_defect_type: int
 
 var path_to_travel := []
 var current_travel_index := -1
-
-func _ready() -> void:
-	print("Current position: ", global_position)
-	print("Test target node: ", test_target_node.global_position)
-	move_to(test_target_node.global_position)
 
 func _process(delta: float) -> void:
 	if current_travel_index < 0 || current_travel_index >= path_to_travel.size():
@@ -34,17 +26,13 @@ func move_to(global_target_position: Vector2) -> void:
 	current_travel_index = 0
 
 func find_path_to(global_target_position: Vector2) -> Array:
-	var w := Waypoint.new()
-	w.neighbours = []
-	print(w)
 	var waypoints := get_tree().get_nodes_in_group("waypoint")
 	var neighbour_waypoints := Global.find_neighbour_waypoints(waypoints, global_target_position)
-	return a_star(
+	return find_path_to_impl(
 		neighbour_waypoints[0],
 		neighbour_waypoints[1],
 		Global.find_projected_waypoint(waypoints, global_target_position)
 	)
-	#return [Global.find_projected_waypoint(waypoints, test_target_node.global_position)]
 
 func reconstruct_path(came_from: Dictionary, current: Waypoint, real_target: Vector2) -> Array:
 	var total_path := [current.global_position]
@@ -55,14 +43,14 @@ func reconstruct_path(came_from: Dictionary, current: Waypoint, real_target: Vec
 	total_path.push_back(real_target)
 	return total_path
 
-func a_star(goal_a: Waypoint, goal_b: Waypoint, real_target: Vector2) -> Array:
+func find_path_to_impl(goal_a: Waypoint, goal_b: Waypoint, real_target: Vector2) -> Array:
 	var start := create_initial_waypoint()
 	var open_set := [start]
 
 	var came_from := {}
 
-	var g_score := {}
-	g_score[start] = 0
+	var score := {}
+	score[start] = 0
 
 	while !open_set.empty():
 		var current_id := 0
@@ -85,12 +73,11 @@ func a_star(goal_a: Waypoint, goal_b: Waypoint, real_target: Vector2) -> Array:
 				cgp = global_position
 
 			var tentative_g_score: float = \
-				g_score[current] + cgp.distance_to(neighbour.global_position)
+				score[current] + cgp.distance_to(neighbour.global_position)
 
-			if tentative_g_score < g_score.get(neighbour, INF):
-				# This path to neighbor is better than any previous one. Record it!
+			if tentative_g_score < score.get(neighbour, INF):
 				came_from[neighbour] = current
-				g_score[neighbour] = tentative_g_score
+				score[neighbour] = tentative_g_score
 				if open_set.find(neighbour) < 0:
 					open_set.append(neighbour)
 

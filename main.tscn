@@ -9,7 +9,6 @@
 [node name="Main" type="Node"]
 
 [node name="Employee" parent="." instance=ExtResource( 1 )]
-test_target_node_path = NodePath("../Defect")
 target_defect_type = 0
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
