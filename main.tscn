@@ -1,11 +1,107 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://employee/employee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://camera/camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ground/ground.tscn" type="PackedScene" id=3]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node"]
 
 [node name="Employee" parent="." instance=ExtResource( 1 )]
-position = Vector2( 671, 443 )
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
+position = Vector2( -615, -574 )
+zoom = Vector2( 5, 5 )
+
+[node name="Grounds" type="Node" parent="."]
+
+[node name="Ground5" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -6, -497 )
+scale = Vector2( 20, 1 )
+
+[node name="Ground" parent="Grounds" instance=ExtResource( 3 )]
+scale = Vector2( 20, 1 )
+
+[node name="Ground6" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1217, -618 )
+rotation = 0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground4" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -1221, -372 )
+rotation = -0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground2" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1217, -126 )
+rotation = 0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground3" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1682, -251 )
+scale = Vector2( 5, 1 )
+
+[node name="Ground7" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1682, -743 )
+scale = Vector2( 5, 1 )
+
+[node name="Ground8" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -6, -992 )
+scale = Vector2( 20, 1 )
+
+[node name="Ground9" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1217, -1113 )
+rotation = 0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground10" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -1221, -867 )
+rotation = -0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground11" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1682, -1238 )
+scale = Vector2( 5, 1 )
+
+[node name="Ground12" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -6, -1487 )
+scale = Vector2( 20, 1 )
+
+[node name="Ground13" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1217, -1608 )
+rotation = 0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground14" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -1221, -1362 )
+rotation = -0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground15" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1682, -1733 )
+scale = Vector2( 5, 1 )
+
+[node name="Ground16" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -6, -1982 )
+scale = Vector2( 20, 1 )
+
+[node name="Ground17" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1217, -2103 )
+rotation = 0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground18" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -1221, -1857 )
+rotation = -0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground19" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1682, -2228 )
+scale = Vector2( 5, 1 )
