@@ -1,95 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://employee/employee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://camera/camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ground/ground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://defect/defect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://waypoint/waypoint.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 
 [node name="Employee" parent="." instance=ExtResource( 1 )]
+test_target_node_path = NodePath("../Position2D")
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
 position = Vector2( -615, -574 )
 zoom = Vector2( 5, 5 )
 
 [node name="Grounds" type="Node" parent="."]
-
-[node name="Ground5" parent="Grounds" instance=ExtResource( 3 )]
-modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
-position = Vector2( -6, -497 )
-scale = Vector2( 20, 1 )
-
-[node name="Ground" parent="Grounds" instance=ExtResource( 3 )]
-scale = Vector2( 20, 1 )
-
-[node name="Ground6" parent="Grounds" instance=ExtResource( 3 )]
-position = Vector2( -1217, -618 )
-rotation = 0.523598
-scale = Vector2( 5, 1 )
-
-[node name="Ground4" parent="Grounds" instance=ExtResource( 3 )]
-modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
-position = Vector2( -1221, -372 )
-rotation = -0.523598
-scale = Vector2( 5, 1 )
-
-[node name="Ground2" parent="Grounds" instance=ExtResource( 3 )]
-position = Vector2( -1217, -126 )
-rotation = 0.523598
-scale = Vector2( 5, 1 )
-
-[node name="Ground3" parent="Grounds" instance=ExtResource( 3 )]
-position = Vector2( -1682, -251 )
-scale = Vector2( 5, 1 )
-
-[node name="Ground7" parent="Grounds" instance=ExtResource( 3 )]
-position = Vector2( -1682, -743 )
-scale = Vector2( 5, 1 )
-
-[node name="Ground8" parent="Grounds" instance=ExtResource( 3 )]
-modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
-position = Vector2( -6, -992 )
-scale = Vector2( 20, 1 )
-
-[node name="Ground9" parent="Grounds" instance=ExtResource( 3 )]
-position = Vector2( -1217, -1113 )
-rotation = 0.523598
-scale = Vector2( 5, 1 )
-
-[node name="Ground10" parent="Grounds" instance=ExtResource( 3 )]
-modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
-position = Vector2( -1221, -867 )
-rotation = -0.523598
-scale = Vector2( 5, 1 )
-
-[node name="Ground11" parent="Grounds" instance=ExtResource( 3 )]
-position = Vector2( -1682, -1238 )
-scale = Vector2( 5, 1 )
-
-[node name="Ground12" parent="Grounds" instance=ExtResource( 3 )]
-modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
-position = Vector2( -6, -1487 )
-scale = Vector2( 20, 1 )
-
-[node name="Ground13" parent="Grounds" instance=ExtResource( 3 )]
-position = Vector2( -1217, -1608 )
-rotation = 0.523598
-scale = Vector2( 5, 1 )
-
-[node name="Ground14" parent="Grounds" instance=ExtResource( 3 )]
-modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
-position = Vector2( -1221, -1362 )
-rotation = -0.523598
-scale = Vector2( 5, 1 )
-
-[node name="Ground15" parent="Grounds" instance=ExtResource( 3 )]
-position = Vector2( -1682, -1733 )
-scale = Vector2( 5, 1 )
-
-[node name="Ground16" parent="Grounds" instance=ExtResource( 3 )]
-modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
-position = Vector2( -6, -1982 )
-scale = Vector2( 20, 1 )
 
 [node name="Ground17" parent="Grounds" instance=ExtResource( 3 )]
 position = Vector2( -1217, -2103 )
@@ -102,6 +28,151 @@ position = Vector2( -1221, -1857 )
 rotation = -0.523598
 scale = Vector2( 5, 1 )
 
+[node name="Ground13" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1217, -1608 )
+rotation = 0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground14" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -1221, -1362 )
+rotation = -0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground9" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1217, -1113 )
+rotation = 0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground10" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -1221, -867 )
+rotation = -0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground6" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1217, -618 )
+rotation = 0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground4" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -1221, -372 )
+rotation = -0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground5" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -6, -497 )
+scale = Vector2( 20, 1 )
+
+[node name="Ground" parent="Grounds" instance=ExtResource( 3 )]
+scale = Vector2( 20, 1 )
+
+[node name="Ground2" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1210, -122 )
+rotation = 0.523598
+scale = Vector2( 5, 1 )
+
+[node name="Ground3" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1674, -246 )
+scale = Vector2( 5, 1 )
+
+[node name="Ground7" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1682, -743 )
+scale = Vector2( 5, 1 )
+
+[node name="Ground8" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -6, -992 )
+scale = Vector2( 20, 1 )
+
+[node name="Ground11" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1682, -1238 )
+scale = Vector2( 5, 1 )
+
+[node name="Ground12" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -6, -1487 )
+scale = Vector2( 20, 1 )
+
+[node name="Ground15" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( -1682, -1733 )
+scale = Vector2( 5, 1 )
+
+[node name="Ground16" parent="Grounds" instance=ExtResource( 3 )]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+position = Vector2( -6, -1982 )
+scale = Vector2( 20, 1 )
+
 [node name="Ground19" parent="Grounds" instance=ExtResource( 3 )]
 position = Vector2( -1682, -2228 )
 scale = Vector2( 5, 1 )
+
+[node name="Defect" parent="." instance=ExtResource( 4 )]
+position = Vector2( -796, -94 )
+
+[node name="Waypoints" type="Node" parent="."]
+
+[node name="Waypoint" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( 1000, 0 )
+
+[node name="Waypoint2" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( 993, -497 )
+
+[node name="Waypoint3" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( 994, -992 )
+
+[node name="Waypoint4" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( 993, -1487 )
+
+[node name="Waypoint5" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( 994, -1982 )
+
+[node name="Waypoint6" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1000, 0 )
+
+[node name="Waypoint7" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1007, -497 )
+
+[node name="Waypoint8" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1006, -992 )
+
+[node name="Waypoint9" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1007, -1487 )
+
+[node name="Waypoint10" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1006, -1982 )
+
+[node name="Waypoint11" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1428, -247 )
+
+[node name="Waypoint12" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1435, -744 )
+
+[node name="Waypoint13" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1434, -1239 )
+
+[node name="Waypoint14" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1435, -1734 )
+
+[node name="Waypoint15" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1434, -2229 )
+
+[node name="Waypoint16" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1924, -247 )
+
+[node name="Waypoint17" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1931, -744 )
+
+[node name="Waypoint18" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1930, -1239 )
+
+[node name="Waypoint19" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1931, -1734 )
+
+[node name="Waypoint20" parent="Waypoints" instance=ExtResource( 5 )]
+position = Vector2( -1930, -2229 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -418, -549 )
