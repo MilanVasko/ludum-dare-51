@@ -5,9 +5,6 @@ export(Global.DefectType) var defect_type: int
 var assigned_employee: Node2D = null
 var severity: float
 
-func _ready():
-	severity = rand_range(1.0, 10.0)
-
 func _process(delta: float) -> void:
 	if assigned_employee != null:
 		print("Fixing... ", severity)

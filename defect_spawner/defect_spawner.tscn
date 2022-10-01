@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://defect_spawner/defect_spawner.gd" type="Script" id=1]
+
+[node name="DefectSpawner" type="Node"]
+script = ExtResource( 1 )
+initial_peace_time = 10.0
+new_defect_spawn_time_min = 10.0
+new_defect_spawn_time_range = 15.0
+harder_spawn_time_after = 20.0
+harder_spawn_time_difference = 1.0
+hardest_spawn_time = 5.0
+severity_min = 5.0
+severity_max = 10.0

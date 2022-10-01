@@ -1,7 +1,7 @@
 extends Node2D
 
 const Waypoint = preload("res://waypoint/waypoint.gd")
-const SPEED := 500.0
+const SPEED := 350.0
 
 export(Global.DefectType) var target_defect_type: int
 
@@ -20,10 +20,11 @@ func _process(delta: float) -> void:
 		return
 
 	if is_instance_valid(defect_to_fix) && !defect_to_fix.accepts_employee(self):
-		print("No")
+		# someone else got there sooner
 		defect_to_fix = null
 		current_travel_index = -1
 		return
+
 	var target_position: Vector2 = path_to_travel[current_travel_index]
 	var rest_of_the_way := target_position - global_position
 	var intended_movement := rest_of_the_way.normalized() * SPEED * delta

@@ -4,12 +4,12 @@
 [ext_resource path="res://white_square.png" type="Texture" id=2]
 [ext_resource path="res://clickable_sprite.gd" type="Script" id=3]
 
-[node name="Defect" type="Node2D"]
+[node name="Defect" type="Node2D" groups=["defect"]]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.321569, 0.541176, 0.505882, 1 )
-scale = Vector2( 50, 50 )
+scale = Vector2( 100, 100 )
 texture = ExtResource( 2 )
 script = ExtResource( 3 )
 consume_input = true
