@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://employee/employee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player_camera/player_camera.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://defect_spawner/defect_spawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://gui/gui.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game_state/game_state.tscn" type="PackedScene" id=9]
+[ext_resource path="res://employee_spawn/employee_spawn.tscn" type="PackedScene" id=10]
 
 [node name="Main" type="Node"]
 
@@ -286,3 +287,14 @@ position = Vector2( -35, -2144 )
 
 [node name="DefectSpawn25" parent="DefectSpawns" instance=ExtResource( 4 )]
 position = Vector2( 654, -2150 )
+
+[node name="EmployeeSpawns" type="Node" parent="."]
+
+[node name="EmployeeSpawn" parent="EmployeeSpawns" instance=ExtResource( 10 )]
+position = Vector2( 390, 0 )
+
+[node name="EmployeeSpawn2" parent="EmployeeSpawns" instance=ExtResource( 10 )]
+position = Vector2( 165, 0 )
+
+[node name="EmployeeSpawn3" parent="EmployeeSpawns" instance=ExtResource( 10 )]
+position = Vector2( 647, 0 )

@@ -55,9 +55,12 @@ func is_closer(a: Node2D, b: Node2D, global_position: Vector2) -> bool:
 		   b.global_position.distance_squared_to(global_position)
 
 func format_percent(value: float, precision: int) -> String:
+	return format_number(value * 100, precision) + "%"
+
+func format_number(value: float, precision: int) -> String:
 	var p := int(pow(10, precision))
-	var expanded := int(abs(value * 100 * p))
-	return ("-" if value < 0.0 else "") + str(int(expanded / float(p))) + "." + str(expanded % p) + "%"
+	var expanded := int(abs(value * p))
+	return ("-" if value < 0.0 else "") + str(int(expanded / float(p))) + "." + str(expanded % p)
 
 func format_rate(rate: float, precision: int) -> String:
 	return ("+" if rate > 0.0 else "") + format_percent(rate, precision)

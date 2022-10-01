@@ -1,0 +1,3 @@
+[gd_scene format=2]
+
+[node name="EmployeeSpawn" type="Position2D" groups=["employee_spawn"]]

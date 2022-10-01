@@ -2,7 +2,7 @@
 
 [ext_resource path="res://gui/gui.gd" type="Script" id=1]
 
-[node name="GUI" type="Control" groups=["customer_satisfaction_subscriber", "time_subscriber"]]
+[node name="GUI" type="Control" groups=["customer_satisfaction_subscriber", "money_subscriber", "time_subscriber"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -72,3 +72,43 @@ size_flags_vertical = 5
 text = "Value"
 align = 1
 valign = 1
+
+[node name="MoneyPanel" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -50.0
+margin_right = 400.0
+
+[node name="Money" type="HBoxContainer" parent="MoneyPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="MoneyPanel/Money"]
+margin_right = 198.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Coins"
+align = 1
+valign = 1
+
+[node name="Value" type="Label" parent="MoneyPanel/Money"]
+margin_left = 202.0
+margin_right = 400.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Value"
+align = 1
+valign = 1
+
+[node name="NewEmployee" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -50.0
+text = "+1 Employee (100 coins)"
+
+[connection signal="pressed" from="NewEmployee" to="." method="_on_new_employee_pressed"]

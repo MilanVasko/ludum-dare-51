@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game_state/game_state.gd" type="Script" id=1]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 1.279, 0, 1, Vector2( 0.107843, 0.137931 ), 1.279, 0.533867, 1, 1, Vector2( 0.382353, 0.284483 ), 1.07671, 1.07671, 0, 0, Vector2( 1, 1 ), 1.15846, 0.0, 1, 0 ]
 
-[node name="GameState" type="Node" groups=["defect_life_subscriber"]]
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="GameState" type="Node" groups=["buy_subscriber", "defect_life_subscriber", "game_state"]]
 script = ExtResource( 1 )
-customer_satisfaction_deterioration_speed_min = -0.01
+customer_satisfaction_deterioration_speed_min = -0.015
 customer_satisfaction_deterioration_speed_max = 0.075
 customer_satisfaction_deterioration_curve = SubResource( 1 )
+money_speed_min = 0.1
+money_speed_max = 1.0
+money_speed_curve = SubResource( 2 )
+employee_cost = 100.0
