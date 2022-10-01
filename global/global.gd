@@ -23,12 +23,13 @@ func find_closest_waypoint(waypoints: Array, global_position: Vector2) -> Node2D
 	var closest_waypoint = null
 	for w in waypoints:
 		var waypoint: Node2D = w
-		if waypoint.global_position.y > global_position.y:
+		if waypoint.global_position.y > global_position.y - 5.0:
 			if closest_waypoint == null:
 				closest_waypoint = waypoint
 				continue
 			if is_closer(waypoint, closest_waypoint, global_position):
 				closest_waypoint = waypoint
+	assert(closest_waypoint != null)
 	return closest_waypoint
 
 func find_neighbour_to_closest_waypoint(closest_waypoint: Node2D, global_position: Vector2) -> Node2D:
