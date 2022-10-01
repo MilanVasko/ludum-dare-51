@@ -49,8 +49,7 @@ func is_fixing() -> bool:
 	return !is_travelling() && is_instance_valid(defect_to_fix)
 
 func select() -> void:
-	if !is_fixing():
-		sprite.modulate.a = 0.5
+	sprite.modulate.a = 0.5
 
 func unselect() -> void:
 	sprite.modulate.a = 1.0
