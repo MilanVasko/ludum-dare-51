@@ -19,6 +19,9 @@ mouse_filter = 2
 
 [node name="GameState" parent="." instance=ExtResource( 9 )]
 
+[node name="DefectSpawner" parent="." instance=ExtResource( 7 )]
+initial_peace_time = 2.0
+
 [node name="Background" parent="." instance=ExtResource( 6 )]
 modulate = Color( 0.376471, 0.376471, 0.376471, 1 )
 scale = Vector2( 100, 100 )
@@ -283,5 +286,3 @@ position = Vector2( -35, -2144 )
 
 [node name="DefectSpawn25" parent="DefectSpawns" instance=ExtResource( 4 )]
 position = Vector2( 654, -2150 )
-
-[node name="DefectSpawner" parent="." instance=ExtResource( 7 )]

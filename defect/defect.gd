@@ -5,11 +5,15 @@ export(Global.DefectType) var defect_type: int
 var assigned_employee: Node2D = null
 var severity: float
 
+func _ready() -> void:
+	get_tree().call_group("defect_life_subscriber", "_on_defect_spawned")
+
 func _process(delta: float) -> void:
 	if assigned_employee != null:
 		print("Fixing... ", severity)
 		severity -= delta
 		if severity <= 0.0:
+			get_tree().call_group("defect_life_subscriber", "_on_defect_fixed")
 			queue_free()
 
 func _on_sprite_clicked(_event: InputEventMouseButton) -> void:
