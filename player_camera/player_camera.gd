@@ -29,21 +29,21 @@ func _on_defect_clicked(defect: Node2D) -> void:
 		print("An employee must be selected!")
 		return
 
-	selected_employee.move_to(defect.global_position)
-	_on_employee_unselected()
-
-func _on_employee_unselected() -> void:
+	selected_employee.go_and_fix(defect)
 	_on_employee_selected(null)
 
-func _on_employee_selected(employee: Node2D) -> void:
-	if selected_employee != employee:
-		safely_notify_node(selected_employee, false)
-		selected_employee = employee
-		safely_notify_node(selected_employee, true)
-	else:
-		safely_notify_node(selected_employee, false)
-		selected_employee = null
+func _on_employee_move(target_global_position: Vector2) -> void:
+	if selected_employee != null:
+		selected_employee.move_to(target_global_position)
+		_on_employee_selected(null)
 
-func safely_notify_node(node: Node2D, selected: bool) -> void:
-	if node != null && node.has_method("set_selected"):
-		node.set_selected(selected)
+func _on_employee_selected(employee: Node2D) -> void:
+	if selected_employee != null:
+		selected_employee.unselect()
+
+	if selected_employee != employee:
+		selected_employee = employee
+		if selected_employee != null:
+			selected_employee.select()
+	else:
+		selected_employee = null

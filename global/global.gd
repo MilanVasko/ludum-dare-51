@@ -5,6 +5,9 @@ enum DefectType {
 	REPAIR
 }
 
+func _ready():
+	randomize()
+
 func find_projected_waypoint(waypoints: Array, global_position: Vector2) -> Vector2:
 	var neighbours := find_neighbour_waypoints(waypoints, global_position)
 	var waypoint_a: Vector2 = neighbours[0].global_position

@@ -7,11 +7,22 @@ export(Global.DefectType) var target_defect_type: int
 
 onready var sprite = $Sprite
 
+var defect_to_fix: Node2D = null
 var path_to_travel := []
 var current_travel_index := -1
 
 func _process(delta: float) -> void:
-	if current_travel_index < 0 || current_travel_index >= path_to_travel.size():
+	if !is_travelling():
+		if defect_to_fix == null:
+			return
+		if !is_instance_valid(defect_to_fix):
+			defect_to_fix = null
+		return
+
+	if is_instance_valid(defect_to_fix) && !defect_to_fix.accepts_employee(self):
+		print("No")
+		defect_to_fix = null
+		current_travel_index = -1
 		return
 	var target_position: Vector2 = path_to_travel[current_travel_index]
 	var rest_of_the_way := target_position - global_position
@@ -21,11 +32,41 @@ func _process(delta: float) -> void:
 	   intended_movement.length_squared() > rest_of_the_way.length_squared():
 		intended_movement = rest_of_the_way
 		current_travel_index += 1
+		if !is_travelling():
+			on_destination_reached()
 	global_position += intended_movement
 
-func move_to(global_target_position: Vector2) -> void:
+func on_destination_reached() -> void:
+	if is_instance_valid(defect_to_fix) && defect_to_fix.accepts_employee(self):
+		defect_to_fix.assign_employee(self)
+		unselect()
+
+func is_travelling() -> bool:
+	return current_travel_index >= 0 && current_travel_index < path_to_travel.size()
+
+func is_fixing() -> bool:
+	return !is_travelling() && is_instance_valid(defect_to_fix)
+
+func select() -> void:
+	if !is_fixing():
+		sprite.modulate.a = 0.5
+
+func unselect() -> void:
+	sprite.modulate.a = 1.0
+
+func go_and_fix(defect: Node2D) -> bool:
+	if !move_to(defect.global_position):
+		return false
+	defect_to_fix = defect
+	return true
+
+func move_to(global_target_position: Vector2) -> bool:
+	if is_fixing():
+		return false
+	defect_to_fix = null
 	path_to_travel = find_path_to(global_target_position)
 	current_travel_index = 0
+	return true
 
 func find_path_to(global_target_position: Vector2) -> Array:
 	var waypoints := get_tree().get_nodes_in_group("waypoint")
@@ -46,7 +87,17 @@ func reconstruct_path(came_from: Dictionary, current: Waypoint, real_target: Vec
 	return total_path
 
 func find_path_to_impl(goal_a: Waypoint, goal_b: Waypoint, real_target: Vector2) -> Array:
-	var start := create_initial_waypoint()
+	var waypoints := get_tree().get_nodes_in_group("waypoint")
+	var neighbours := Global.find_neighbour_waypoints(waypoints, global_position)
+	var waypoint_a: Waypoint = neighbours[0]
+	var waypoint_b: Waypoint = neighbours[1]
+	if waypoint_a == goal_a && waypoint_b == goal_b:
+		# don't bother finding the path if we're already near
+		return [real_target]
+
+	var start := Waypoint.new()
+	start.neighbours = [waypoint_a.get_path(), waypoint_b.get_path()]
+
 	var open_set := [start]
 
 	var came_from := {}
@@ -86,21 +137,8 @@ func find_path_to_impl(goal_a: Waypoint, goal_b: Waypoint, real_target: Vector2)
 	assert(false, "Could not find path")
 	return []
 
-func create_initial_waypoint() -> Waypoint:
-	var waypoints := get_tree().get_nodes_in_group("waypoint")
-	var neighbours := Global.find_neighbour_waypoints(waypoints, global_position)
-	var waypoint_a: Node2D = neighbours[0]
-	var waypoint_b: Node2D = neighbours[1]
-
-	var result := Waypoint.new()
-	result.neighbours = [waypoint_a.get_path(), waypoint_b.get_path()]
-	return result
-
 func _on_sprite_clicked(_event: InputEventMouseButton) -> void:
 	get_tree().call_group("employee_click_subscriber", "_on_employee_selected", self)
-
-func set_selected(selected: bool) -> void:
-	sprite.modulate.a = 0.5 if selected else 1.0
 
 func is_selected() -> bool:
 	return sprite.modulate < 0.99
