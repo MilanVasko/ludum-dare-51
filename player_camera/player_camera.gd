@@ -11,6 +11,8 @@ var selected_employee: Node2D = null
 func _process(_delta: float) -> void:
 	if dragging:
 		position -= (current_mouse_position - last_mouse_position) * zoom
+		position.x = clamp(position.x, -2500.0, 2500.0)
+		position.y = clamp(position.y, -2500.0, 2500.0)
 		last_mouse_position = current_mouse_position
 
 func _unhandled_input(event: InputEvent) -> void:
