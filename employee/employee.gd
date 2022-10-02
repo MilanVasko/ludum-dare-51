@@ -5,7 +5,8 @@ const SPEED := 350.0
 
 export(Global.DefectType) var target_defect_type: int
 
-onready var sprites = $Root
+onready var sprites := $Root
+onready var animation_player := $AnimationPlayer
 
 var defect_to_fix: Node2D = null
 var path_to_travel := []
@@ -13,7 +14,10 @@ var current_travel_index := -1
 
 func _process(delta: float) -> void:
 	if !is_travelling():
+		animation_player.play("fix", -1, 2.0)
 		if defect_to_fix == null:
+			animation_player.play("rest")
+			print("Resting")
 			return
 		if !is_instance_valid(defect_to_fix):
 			defect_to_fix = null
@@ -28,6 +32,9 @@ func _process(delta: float) -> void:
 	var target_position: Vector2 = path_to_travel[current_travel_index]
 	var rest_of_the_way := target_position - global_position
 	var intended_movement := rest_of_the_way.normalized() * SPEED * delta
+
+	animation_player.play("walk", -1, 2.2)
+	scale.x = -1 if rest_of_the_way.x < 0.0 else 1
 
 	if is_zero_approx(intended_movement.length_squared()) || \
 	   intended_movement.length_squared() > rest_of_the_way.length_squared():

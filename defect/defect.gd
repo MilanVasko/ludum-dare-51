@@ -5,7 +5,7 @@ export(Global.DefectType) var defect_type: int
 onready var progress_bar: ProgressBar = $ProgressBar/ProgressBar
 
 var assigned_employee: Node2D = null
-var severity: float
+var severity: float = 5.0
 var current_severity: float
 
 func _ready() -> void:
