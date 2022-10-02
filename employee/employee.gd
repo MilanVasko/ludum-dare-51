@@ -80,11 +80,16 @@ func find_path_to(global_target_position: Vector2) -> Array:
 	if neighbour_waypoints.size() != 2:
 		return []
 
-	return find_path_to_impl(
-		neighbour_waypoints[0],
-		neighbour_waypoints[1],
-		Global.find_projected_waypoint(waypoints, global_target_position)
-	)
+	var projected_waypoint := Global.find_projected_waypoint(waypoints, global_target_position)
+	spawn_indicator_at(projected_waypoint)
+
+	return find_path_to_impl(neighbour_waypoints[0], neighbour_waypoints[1], projected_waypoint)
+
+func spawn_indicator_at(global_pos: Vector2) -> void:
+	var waypoint_indicator_scene := preload("res://waypoint_indicator/waypoint_indicator.tscn")
+	var waypoint_indicator := waypoint_indicator_scene.instance()
+	get_parent().add_child(waypoint_indicator)
+	waypoint_indicator.global_position = global_pos
 
 func reconstruct_path(came_from: Dictionary, current: Waypoint, real_target: Vector2) -> Array:
 	var total_path := [current.global_position]
