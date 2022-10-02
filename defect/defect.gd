@@ -2,7 +2,7 @@ extends Node2D
 
 export(Global.DefectType) var defect_type: int
 
-onready var progress_bar: ProgressBar = $ProgressBar
+onready var progress_bar: ProgressBar = $ProgressBar/ProgressBar
 
 var assigned_employee: Node2D = null
 var severity: float

@@ -1,5 +1,7 @@
 extends Node
 
+export(NodePath) var employee_container_path: NodePath
+
 export(float) var customer_satisfaction_deterioration_speed_min: float
 export(float) var customer_satisfaction_deterioration_speed_max: float
 export(Curve) var customer_satisfaction_deterioration_curve: Curve
@@ -9,6 +11,8 @@ export(float) var money_speed_max: float
 export(Curve) var money_speed_curve: Curve
 
 export(float) var employee_cost: float
+
+onready var employee_container: Node = get_node(employee_container_path)
 
 var defect_spawn_count: int
 
@@ -69,7 +73,8 @@ func spawn_employee() -> void:
 	var spawn_point: Node2D = spawn_points[randi() % spawn_points.size()]
 	var employee_scene := load("res://employee/employee.tscn")
 	var employee_instance = employee_scene.instance()
-	spawn_point.add_child(employee_instance)
+	employee_container.add_child(employee_instance)
+	employee_instance.global_position = spawn_point.global_position
 
 func _on_defect_spawned() -> void:
 	current_defects += 1

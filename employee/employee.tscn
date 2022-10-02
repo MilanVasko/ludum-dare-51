@@ -1,18 +1,191 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://white_square.png" type="Texture" id=1]
 [ext_resource path="res://employee/employee.gd" type="Script" id=2]
 [ext_resource path="res://clickable_sprite.gd" type="Script" id=3]
+[ext_resource path="res://employee/head.tres" type="Texture" id=4]
+[ext_resource path="res://employee/lower_torso.tres" type="Texture" id=5]
+[ext_resource path="res://employee/lower_leg.tres" type="Texture" id=6]
+[ext_resource path="res://employee/upper_leg.tres" type="Texture" id=7]
+[ext_resource path="res://employee/lower_arm.tres" type="Texture" id=8]
+[ext_resource path="res://employee/upper_arm.tres" type="Texture" id=9]
+[ext_resource path="res://employee/upper_torso.tres" type="Texture" id=10]
 
 [node name="Employee" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 modulate = Color( 0.0705882, 0.54902, 0.054902, 1 )
 position = Vector2( 0, -100 )
 scale = Vector2( 100, 200 )
 texture = ExtResource( 1 )
 script = ExtResource( 3 )
 consume_input = true
+
+[node name="Root" type="Position2D" parent="."]
+
+[node name="LowerTorso" type="Sprite" parent="Root"]
+self_modulate = Color( 0.14902, 0.501961, 0.329412, 1 )
+position = Vector2( 0, -98 )
+scale = Vector2( 0.349881, 0.349881 )
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( -19, -120 )
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="UpperTorso" type="Sprite" parent="Root/LowerTorso"]
+self_modulate = Color( 0.14902, 0.501961, 0.329412, 1 )
+position = Vector2( 0, -101 )
+texture = ExtResource( 10 )
+centered = false
+offset = Vector2( -19, -113.16 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Head" type="Sprite" parent="Root/LowerTorso/UpperTorso"]
+modulate = Color( 0.878431, 0.792157, 0.631373, 1 )
+position = Vector2( -4.76837e-07, -102 )
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( -64, -109.602 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="End" type="Position2D" parent="Root/LowerTorso/UpperTorso/Head"]
+position = Vector2( 0, -100 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="UpperBackArm" type="Sprite" parent="Root/LowerTorso/UpperTorso"]
+self_modulate = Color( 0.054902, 0.376471, 0.219608, 1 )
+position = Vector2( 0, -80 )
+rotation = -0.189922
+z_index = -1
+texture = ExtResource( 9 )
+centered = false
+offset = Vector2( -19, -19 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="LowerBackArm" type="Sprite" parent="Root/LowerTorso/UpperTorso/UpperBackArm"]
+self_modulate = Color( 0.878431, 0.792157, 0.631373, 1 )
+position = Vector2( 0, 141 )
+rotation = -0.132645
+texture = ExtResource( 8 )
+centered = false
+offset = Vector2( -19, -19 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="End" type="Position2D" parent="Root/LowerTorso/UpperTorso/UpperBackArm/LowerBackArm"]
+position = Vector2( 0, 111 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="UpperFrontArm" type="Sprite" parent="Root/LowerTorso/UpperTorso"]
+self_modulate = Color( 0.270554, 0.582031, 0.429753, 1 )
+position = Vector2( 0, -80 )
+rotation = 0.249098
+texture = ExtResource( 9 )
+centered = false
+offset = Vector2( -19, -19 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="LowerFrontArm" type="Sprite" parent="Root/LowerTorso/UpperTorso/UpperFrontArm"]
+self_modulate = Color( 0.878431, 0.792157, 0.631373, 1 )
+position = Vector2( 0, 141 )
+rotation = -0.132279
+texture = ExtResource( 8 )
+centered = false
+offset = Vector2( -19, -19 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="End" type="Position2D" parent="Root/LowerTorso/UpperTorso/UpperFrontArm/LowerFrontArm"]
+position = Vector2( 0, 111 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="End" type="Position2D" parent="Root/LowerTorso/UpperTorso"]
+position = Vector2( 0, -90 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="UpperBackLeg" type="Sprite" parent="Root"]
+self_modulate = Color( 0.0710449, 0.125603, 0.378906, 1 )
+position = Vector2( 0, -98 )
+rotation = -0.251222
+scale = Vector2( 0.349881, 0.349881 )
+texture = ExtResource( 7 )
+centered = false
+offset = Vector2( -19, -19 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="LowerBackLeg" type="Sprite" parent="Root/UpperBackLeg"]
+self_modulate = Color( 0.0705882, 0.12549, 0.380392, 1 )
+position = Vector2( 0, 128 )
+rotation = 0.161209
+texture = ExtResource( 6 )
+centered = false
+offset = Vector2( -19, -19 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="End" type="Position2D" parent="Root/UpperBackLeg/LowerBackLeg"]
+position = Vector2( 0, 140 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="UpperFrontLeg" type="Sprite" parent="Root"]
+self_modulate = Color( 0.145098, 0.2, 0.454902, 1 )
+position = Vector2( 0, -98 )
+rotation = 0.117099
+scale = Vector2( 0.349881, 0.349881 )
+texture = ExtResource( 7 )
+centered = false
+offset = Vector2( -19, -19 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="LowerFrontLeg" type="Sprite" parent="Root/UpperFrontLeg"]
+self_modulate = Color( 0.145098, 0.2, 0.454902, 1 )
+position = Vector2( 0, 128 )
+rotation = 0.107877
+texture = ExtResource( 6 )
+centered = false
+offset = Vector2( -19, -19 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="End" type="Position2D" parent="Root/UpperFrontLeg/LowerFrontLeg"]
+position = Vector2( 0, 140 )
+__meta__ = {
+"_edit_bone_": true
+}
 
 [connection signal="on_sprite_clicked" from="Sprite" to="." method="_on_sprite_clicked"]

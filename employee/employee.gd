@@ -5,7 +5,7 @@ const SPEED := 350.0
 
 export(Global.DefectType) var target_defect_type: int
 
-onready var sprite = $Sprite
+onready var sprites = $Root
 
 var defect_to_fix: Node2D = null
 var path_to_travel := []
@@ -49,10 +49,10 @@ func is_fixing() -> bool:
 	return !is_travelling() && is_instance_valid(defect_to_fix)
 
 func select() -> void:
-	sprite.modulate.a = 0.5
+	sprites.modulate.a = 0.5
 
 func unselect() -> void:
-	sprite.modulate.a = 1.0
+	sprites.modulate.a = 1.0
 
 func go_and_fix(defect: Node2D) -> bool:
 	if !move_to(defect.global_position):
@@ -141,4 +141,4 @@ func _on_sprite_clicked(_event: InputEventMouseButton) -> void:
 	get_tree().call_group("employee_click_subscriber", "_on_employee_selected", self)
 
 func is_selected() -> bool:
-	return sprite.modulate < 0.99
+	return sprites.modulate < 0.99
