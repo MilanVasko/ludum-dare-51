@@ -169,12 +169,6 @@ position = Vector2( -247, -1188 )
 [node name="DefectSpawn20" parent="DefectSpawns" instance=ExtResource( 9 )]
 position = Vector2( -811, -1185 )
 
-[node name="DefectSpawn21" parent="DefectSpawns" instance=ExtResource( 9 )]
-position = Vector2( -1799, -2376 )
-
-[node name="DefectSpawn22" parent="DefectSpawns" instance=ExtResource( 9 )]
-position = Vector2( -1553, -2375 )
-
 [node name="DefectSpawn23" parent="DefectSpawns" instance=ExtResource( 9 )]
 position = Vector2( -784, -2173 )
 

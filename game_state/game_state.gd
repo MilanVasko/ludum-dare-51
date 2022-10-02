@@ -11,6 +11,7 @@ export(float) var money_speed_max: float
 export(Curve) var money_speed_curve: Curve
 
 export(float) var employee_cost: float
+export(float) var employee_cost_rise: float
 
 onready var employee_container: Node = get_node(employee_container_path)
 
@@ -30,7 +31,8 @@ func _ready() -> void:
 
 	get_tree().call_group("time_subscriber", "_on_time_updated", time_passed)
 	get_tree().call_group("customer_satisfaction_subscriber", "_on_customer_satisfaction_updated", current_customer_satisfaction, -current_customer_satisfaction_deterioration_rate)
-	get_tree().call_group("money_subscriber", "_on_money_updated", current_money)
+	get_tree().call_group("money_subscriber", "_on_money_updated", current_money, employee_cost)
+	get_tree().call_group("employee_cost_subscriber", "_on_employee_cost_changed", employee_cost)
 
 func debug_print() -> void:
 	var i = 0
@@ -59,14 +61,17 @@ func _process(delta: float) -> void:
 
 	get_tree().call_group("time_subscriber", "_on_time_updated", time_passed)
 	get_tree().call_group("customer_satisfaction_subscriber", "_on_customer_satisfaction_updated", current_customer_satisfaction, -current_customer_satisfaction_deterioration_rate)
-	get_tree().call_group("money_subscriber", "_on_money_updated", current_money)
+	get_tree().call_group("money_subscriber", "_on_money_updated", current_money, employee_cost)
 
 func _on_employee_buy_requested() -> void:
 	if current_money < employee_cost:
 		return
 	current_money -= employee_cost
+	employee_cost += employee_cost_rise
+	get_tree().call_group("employee_cost_subscriber", "_on_employee_cost_changed", employee_cost)
+
 	spawn_employee()
-	get_tree().call_group("money_subscriber", "_on_money_updated", current_money)
+	get_tree().call_group("money_subscriber", "_on_money_updated", current_money, employee_cost)
 
 func spawn_employee() -> void:
 	var spawn_points := get_tree().get_nodes_in_group("employee_spawn")
