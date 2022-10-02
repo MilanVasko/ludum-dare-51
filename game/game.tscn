@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ground/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://defect_spawner/defect_spawner.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://employee/employee.tscn" type="PackedScene" id=12]
 [ext_resource path="res://waypoint/waypoint.tscn" type="PackedScene" id=13]
 [ext_resource path="res://art/art.tscn" type="PackedScene" id=14]
+[ext_resource path="res://reception/reception.tscn" type="PackedScene" id=15]
 
 [node name="Game" type="Node"]
 
@@ -49,7 +50,7 @@ scale = Vector2( 30.829, 29.922 )
 z_index = -2
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 7 )]
-position = Vector2( -288, -199 )
+position = Vector2( 254, -188 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -212,9 +213,10 @@ position = Vector2( 785, -2161 )
 [node name="Employees" type="Node" parent="."]
 
 [node name="Employee" parent="Employees" instance=ExtResource( 12 )]
+position = Vector2( 102, 0 )
 
 [node name="Employee2" parent="Employees" instance=ExtResource( 12 )]
-position = Vector2( -800, 0 )
+position = Vector2( -659, 0 )
 
 [node name="Waypoints" type="Node" parent="."]
 
@@ -333,7 +335,15 @@ position = Vector2( 165, 0 )
 [node name="EmployeeSpawn3" parent="EmployeeSpawns" instance=ExtResource( 11 )]
 position = Vector2( 647, 0 )
 
+[node name="Art" parent="." instance=ExtResource( 14 )]
+position = Vector2( 832, -307 )
+
+[node name="Reception" parent="." instance=ExtResource( 15 )]
+position = Vector2( 746, -30 )
+z_index = -2
+
 [node name="TileMapFront" type="TileMap" parent="."]
+z_index = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 100, 100 )
 cell_custom_transform = Transform2D( 100, 0, 0, 100, 0, 0 )
@@ -347,6 +357,7 @@ scale = Vector2( 20000, 2000 )
 texture = ExtResource( 4 )
 
 [node name="TileMapFills" type="TileMap" parent="."]
+z_index = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 100, 100 )
 cell_custom_transform = Transform2D( 100, 0, 0, 100, 0, 0 )
@@ -354,6 +365,7 @@ format = 1
 tile_data = PoolIntArray( -1900561, 19, 0, -1966070, 20, 0, -1769490, 23, 0, -1703955, 23, 0, -1638421, 19, 0, -1638390, 20, 0, -1376277, 22, 0, -1376275, 23, 0, -1376268, 25, 0, -1310741, 19, 0, -1310731, 25, 0, -1310710, 20, 0, -1048597, 22, 0, -1048588, 25, 0, -983051, 25, 0, -983030, 20, 0, -720917, 22, 0, -720908, 25, 0, -655371, 25, 0, -655350, 20, 0, -393237, 22, 0, -393228, 25, 0, -327691, 25, 0, -327670, 20, 0, -65557, 22, 0, -12, 22, 0, 65525, 22, 0, 10, 21, 0 )
 
 [node name="TileMapFills2" type="TileMap" parent="."]
+z_index = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 100, 100 )
 cell_custom_transform = Transform2D( 100, 0, 0, 100, 0, 0 )
@@ -361,6 +373,3 @@ format = 1
 tile_data = PoolIntArray( -1638390, 21, 0, -1376277, 19, 0, -1310732, 22, 0, -1245195, 22, 0, -1310710, 21, 0, -1048597, 19, 0, -983052, 22, 0, -917515, 22, 0, -983030, 21, 0, -720917, 19, 0, -655372, 22, 0, -589835, 22, 0, -655350, 21, 0, -393237, 19, 0, -327692, 22, 0, -262155, 22, 0, -327670, 21, 0 )
 
 [node name="Music" parent="." instance=ExtResource( 10 )]
-
-[node name="Art" parent="." instance=ExtResource( 14 )]
-position = Vector2( 721, -297 )
