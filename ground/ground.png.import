@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/door.png-372b0ff057956eaad478f6421df87ffd.stex"
+path="res://.import/ground.png-24c759e5a2d6089caa8bfc0b0f72d71c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://door/door.png"
-dest_files=[ "res://.import/door.png-372b0ff057956eaad478f6421df87ffd.stex" ]
+source_file="res://ground/ground.png"
+dest_files=[ "res://.import/ground.png-24c759e5a2d6089caa8bfc0b0f72d71c.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
@@ -32,4 +32,4 @@ process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
-svg/scale=1.0
+svg/scale=0.391
