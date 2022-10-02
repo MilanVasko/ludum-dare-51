@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ground/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://defect_spawner/defect_spawner.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://employee_spawn/employee_spawn.tscn" type="PackedScene" id=11]
 [ext_resource path="res://employee/employee.tscn" type="PackedScene" id=12]
 [ext_resource path="res://waypoint/waypoint.tscn" type="PackedScene" id=13]
+[ext_resource path="res://art/art.tscn" type="PackedScene" id=14]
 
 [node name="Game" type="Node"]
 
@@ -360,3 +361,6 @@ format = 1
 tile_data = PoolIntArray( -1638390, 21, 0, -1376277, 19, 0, -1310732, 22, 0, -1245195, 22, 0, -1310710, 21, 0, -1048597, 19, 0, -983052, 22, 0, -917515, 22, 0, -983030, 21, 0, -720917, 19, 0, -655372, 22, 0, -589835, 22, 0, -655350, 21, 0, -393237, 19, 0, -327692, 22, 0, -262155, 22, 0, -327670, 21, 0 )
 
 [node name="Music" parent="." instance=ExtResource( 10 )]
+
+[node name="Art" parent="." instance=ExtResource( 14 )]
+position = Vector2( 721, -297 )
