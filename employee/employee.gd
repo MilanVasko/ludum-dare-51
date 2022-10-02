@@ -77,6 +77,9 @@ func move_to(global_target_position: Vector2) -> bool:
 func find_path_to(global_target_position: Vector2) -> Array:
 	var waypoints := get_tree().get_nodes_in_group("waypoint")
 	var neighbour_waypoints := Global.find_neighbour_waypoints(waypoints, global_target_position)
+	if neighbour_waypoints.size() != 2:
+		return []
+
 	return find_path_to_impl(
 		neighbour_waypoints[0],
 		neighbour_waypoints[1],
@@ -95,6 +98,9 @@ func reconstruct_path(came_from: Dictionary, current: Waypoint, real_target: Vec
 func find_path_to_impl(goal_a: Waypoint, goal_b: Waypoint, real_target: Vector2) -> Array:
 	var waypoints := get_tree().get_nodes_in_group("waypoint")
 	var neighbours := Global.find_neighbour_waypoints(waypoints, global_position)
+	if neighbours.size() != 2:
+		return []
+
 	var waypoint_a: Waypoint = neighbours[0]
 	var waypoint_b: Waypoint = neighbours[1]
 	if waypoint_a == goal_a && waypoint_b == goal_b:

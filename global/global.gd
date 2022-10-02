@@ -17,7 +17,11 @@ func find_projected_waypoint(waypoints: Array, global_position: Vector2) -> Vect
 
 func find_neighbour_waypoints(waypoints: Array, global_position: Vector2) -> Array:
 	var closest_waypoint := find_closest_waypoint(waypoints, global_position)
+	if closest_waypoint == null:
+		return []
+
 	var neighbour_waypoint := find_neighbour_to_closest_waypoint(closest_waypoint, global_position)
+	print("Huh? ", neighbour_waypoint, ", ", closest_waypoint)
 	if neighbour_waypoint.global_position.x < closest_waypoint.global_position.x:
 		return [neighbour_waypoint, closest_waypoint]
 	return [closest_waypoint, neighbour_waypoint]
@@ -32,7 +36,7 @@ func find_closest_waypoint(waypoints: Array, global_position: Vector2) -> Node2D
 				continue
 			if is_closer(waypoint, closest_waypoint, global_position):
 				closest_waypoint = waypoint
-	assert(closest_waypoint != null)
+
 	return closest_waypoint
 
 func find_neighbour_to_closest_waypoint(closest_waypoint: Node2D, global_position: Vector2) -> Node2D:
