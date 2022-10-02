@@ -9,6 +9,6 @@ new_defect_spawn_time_min = 7.0
 new_defect_spawn_time_range = 5.0
 harder_spawn_time_after = 10.0
 harder_spawn_time_difference = 0.2
-hardest_spawn_time = 0.5
+hardest_spawn_time = 0.4
 severity_min = 5.0
 severity_max = 5.0
