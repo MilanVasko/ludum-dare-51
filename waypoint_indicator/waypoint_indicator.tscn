@@ -9,6 +9,6 @@ script = ExtResource( 2 )
 self_destruct_time = 2.0
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0, 0, 0.498039 )
+modulate = Color( 0, 0.929412, 1, 0.498039 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )

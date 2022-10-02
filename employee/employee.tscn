@@ -2633,7 +2633,7 @@ consume_input = true
 
 [node name="Selected" type="Sprite" parent="."]
 visible = false
-modulate = Color( 0, 0.658824, 0.117647, 1 )
+modulate = Color( 0, 0.658824, 0.117647, 0.498039 )
 position = Vector2( 0, -100 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 200

@@ -338,6 +338,9 @@ position = Vector2( 647, 0 )
 [node name="Art" parent="." instance=ExtResource( 14 )]
 position = Vector2( 832, -307 )
 
+[node name="Art2" parent="." instance=ExtResource( 14 )]
+position = Vector2( -1565, -2587 )
+
 [node name="Reception" parent="." instance=ExtResource( 15 )]
 position = Vector2( 746, -30 )
 z_index = -2
