@@ -1,6 +1,7 @@
 extends Node2D
 
-export(Global.DefectType) var defect_type: int
+export(Array) var textures: Array
+export(Array) var texture_colors: Array
 
 onready var progress_bar: ProgressBar = $ProgressBar/ProgressBar
 
@@ -9,6 +10,10 @@ var severity: float = 5.0
 var current_severity: float
 
 func _ready() -> void:
+	var sprite := $Sprite
+	sprite.texture = textures[randi() % textures.size()]
+	sprite.modulate = texture_colors[randi() % texture_colors.size()]
+
 	progress_bar.visible = false
 	current_severity = severity
 	get_tree().call_group("defect_life_subscriber", "_on_defect_spawned")

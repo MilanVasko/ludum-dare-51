@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/white_square.png-e465f834c3326600ef22d38d86fadadd.stex"
+path="res://.import/cracks3.svg-1f33db61bedd61f3f2951e3416c572f4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://white_square.png"
-dest_files=[ "res://.import/white_square.png-e465f834c3326600ef22d38d86fadadd.stex" ]
+source_file="res://defect/cracks3.svg"
+dest_files=[ "res://.import/cracks3.svg-1f33db61bedd61f3f2951e3416c572f4.stex" ]
 
 [params]
 

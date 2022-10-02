@@ -14,7 +14,7 @@ var current_travel_index := -1
 
 func _process(delta: float) -> void:
 	if !is_travelling():
-		animation_player.play("fix", -1, 2.0)
+		animation_player.play("fix", -1, 4.0)
 		if defect_to_fix == null:
 			animation_player.play("rest")
 			print("Resting")
@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	var rest_of_the_way := target_position - global_position
 	var intended_movement := rest_of_the_way.normalized() * SPEED * delta
 
-	animation_player.play("walk", -1, 2.2)
+	animation_player.play("walk", -1, SPEED / 140.0) # 70.0 fits perfectly, but feels too fast
 	scale.x = -1 if rest_of_the_way.x < 0.0 else 1
 
 	if is_zero_approx(intended_movement.length_squared()) || \
