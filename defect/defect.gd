@@ -48,3 +48,5 @@ func assign_employee(employee: Node2D) -> void:
 
 func accepts_employee(employee: Node2D) -> bool:
 	return assigned_employee == null || assigned_employee == employee
+
+
