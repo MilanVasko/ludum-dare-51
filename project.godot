@@ -10,7 +10,8 @@ config_version=4
 
 [application]
 
-config/name="Ludum Dare 51"
+config/name="Cursed Hotel"
+config/description="Made for Ludum Dare 51 in 48 hours"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://employee/employee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player_camera/player_camera.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://employee_spawn/employee_spawn.tscn" type="PackedScene" id=10]
 [ext_resource path="res://door/door.tscn" type="PackedScene" id=11]
 [ext_resource path="res://white_square.png" type="Texture" id=12]
+[ext_resource path="res://music/music.tscn" type="PackedScene" id=13]
 
 [node name="Main" type="Node"]
 
@@ -316,3 +317,5 @@ cell_size = Vector2( 100, 100 )
 cell_custom_transform = Transform2D( 100, 0, 0, 100, 0, 0 )
 format = 1
 tile_data = PoolIntArray( -1310710, 21, 0, -1048597, 19, 0, -983052, 22, 0, -917515, 22, 0, -983030, 21, 0, -720917, 19, 0, -655372, 22, 0, -589835, 22, 0, -655350, 21, 0, -393237, 19, 0, -327692, 22, 0, -262155, 22, 0, -327670, 21, 0 )
+
+[node name="Music" parent="." instance=ExtResource( 13 )]

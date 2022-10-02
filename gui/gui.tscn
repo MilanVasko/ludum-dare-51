@@ -112,6 +112,7 @@ margin_top = -50.0
 text = "+1 Employee (100 coins)"
 
 [node name="DifficultyPanel" type="Panel" parent="."]
+visible = false
 margin_right = 260.0
 margin_bottom = 202.0
 
