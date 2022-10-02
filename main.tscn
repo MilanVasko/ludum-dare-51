@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://employee/employee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player_camera/player_camera.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://gui/gui.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game_state/game_state.tscn" type="PackedScene" id=9]
 [ext_resource path="res://employee_spawn/employee_spawn.tscn" type="PackedScene" id=10]
+[ext_resource path="res://door/door.tscn" type="PackedScene" id=11]
 
 [node name="Main" type="Node"]
 
@@ -31,10 +32,48 @@ modulate = Color( 0.376471, 0.376471, 0.376471, 1 )
 scale = Vector2( 100, 100 )
 z_index = -2
 
+[node name="Doors" type="Node" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( 500, -500 )
+
+[node name="Door2" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( 0, -500 )
+
+[node name="Door3" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( -500, -500 )
+
+[node name="Door4" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( 500, -1000 )
+
+[node name="Door5" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( 0, -1000 )
+
+[node name="Door6" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( -500, -1000 )
+
+[node name="Door7" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( 500, -1500 )
+
+[node name="Door8" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( 0, -1500 )
+
+[node name="Door9" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( -500, -1500 )
+
+[node name="Door10" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( 500, -2000 )
+
+[node name="Door11" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( 0, -2000 )
+
+[node name="Door12" parent="Doors" instance=ExtResource( 11 )]
+position = Vector2( -500, -2000 )
+
 [node name="DefectSpawns" type="Node" parent="."]
 
 [node name="DefectSpawn" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -670, -184 )
+position = Vector2( -643, -191 )
 
 [node name="DefectSpawn2" parent="DefectSpawns" instance=ExtResource( 4 )]
 position = Vector2( -165, -174 )
@@ -43,22 +82,25 @@ position = Vector2( -165, -174 )
 position = Vector2( 406, -177 )
 
 [node name="DefectSpawn4" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -797, -691 )
+position = Vector2( -795, -683 )
 
 [node name="DefectSpawn5" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( 619, -685 )
+position = Vector2( 767, -677 )
 
 [node name="DefectSpawn6" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -124, -704 )
+position = Vector2( -246, -674 )
+
+[node name="DefectSpawn26" parent="DefectSpawns" instance=ExtResource( 4 )]
+position = Vector2( 250, -670 )
 
 [node name="DefectSpawn7" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -1534, -364 )
+position = Vector2( -1551, -401 )
 
 [node name="DefectSpawn8" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -1832, -901 )
+position = Vector2( -1812, -911 )
 
 [node name="DefectSpawn9" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -1502, -907 )
+position = Vector2( -1549, -907 )
 
 [node name="DefectSpawn10" parent="DefectSpawns" instance=ExtResource( 4 )]
 position = Vector2( -1804, -402 )
@@ -70,43 +112,52 @@ position = Vector2( -1785, -1377 )
 position = Vector2( -1553, -1377 )
 
 [node name="DefectSpawn13" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -1813, -1901 )
+position = Vector2( -1806, -1884 )
 
 [node name="DefectSpawn14" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -1569, -1904 )
+position = Vector2( -1562, -1891 )
 
 [node name="DefectSpawn15" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -705, -1618 )
+position = Vector2( -785, -1666 )
 
 [node name="DefectSpawn16" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -16, -1628 )
+position = Vector2( -243, -1663 )
 
 [node name="DefectSpawn17" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( 657, -1625 )
+position = Vector2( 785, -1652 )
+
+[node name="DefectSpawn28" parent="DefectSpawns" instance=ExtResource( 4 )]
+position = Vector2( 251, -1676 )
 
 [node name="DefectSpawn18" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( 667, -1158 )
+position = Vector2( 785, -1182 )
 
 [node name="DefectSpawn19" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -41, -1155 )
+position = Vector2( 269, -1177 )
+
+[node name="DefectSpawn27" parent="DefectSpawns" instance=ExtResource( 4 )]
+position = Vector2( -247, -1188 )
 
 [node name="DefectSpawn20" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -743, -1145 )
+position = Vector2( -811, -1185 )
 
 [node name="DefectSpawn21" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -1819, -2326 )
+position = Vector2( -1799, -2376 )
 
 [node name="DefectSpawn22" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -1590, -2348 )
+position = Vector2( -1553, -2375 )
 
 [node name="DefectSpawn23" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -784, -2154 )
+position = Vector2( -784, -2173 )
+
+[node name="DefectSpawn29" parent="DefectSpawns" instance=ExtResource( 4 )]
+position = Vector2( -245, -2152 )
 
 [node name="DefectSpawn24" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( -35, -2144 )
+position = Vector2( 243, -2165 )
 
 [node name="DefectSpawn25" parent="DefectSpawns" instance=ExtResource( 4 )]
-position = Vector2( 654, -2150 )
+position = Vector2( 785, -2161 )
 
 [node name="Employees" type="Node" parent="."]
 

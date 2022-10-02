@@ -17,7 +17,6 @@ func _process(delta: float) -> void:
 		animation_player.play("fix", -1, 4.0)
 		if defect_to_fix == null:
 			animation_player.play("rest")
-			print("Resting")
 			return
 		if !is_instance_valid(defect_to_fix):
 			defect_to_fix = null
