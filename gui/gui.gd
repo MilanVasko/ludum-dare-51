@@ -8,16 +8,27 @@ onready var money_value = $MoneyPanel/Money/Value
 onready var new_employee_button = $NewEmployee
 onready var difficulty_value = $DifficultyPanel/Value
 
+var warning_cooldown := -1.0
+
+func _process(delta: float) -> void:
+	if warning_cooldown > 0.0:
+		warning_cooldown -= delta
+		if warning_cooldown <= 0.0:
+			$Warning.visible = false
+
 func _on_employee_cost_changed(new_employee_cost: float) -> void:
 	new_employee_button.text = "+1 New employee (" + str(new_employee_cost) + " coins)"
 
-func _on_new_employee_pressed():
+func _on_new_employee_pressed() -> void:
 	get_tree().call_group("buy_subscriber", "_on_employee_buy_requested")
 
 func _on_time_updated(time_passed: float) -> void:
-	var seconds := int(time_passed) % 60
-	var minutes := int(time_passed / 60.0)
-	time_value.text = Global.zero_padding(minutes) + str(minutes) + ":" + Global.zero_padding(seconds) + str(seconds)
+	time_value.text = Global.format_time(time_passed)
+
+func _on_no_employee_selected() -> void:
+	$Warning.visible = true
+	warning_cooldown = 2.0
+	$Warning/Label.text = "An employee must be selected to fix a crack!"
 
 func _on_customer_satisfaction_updated(customer_satisfaction: float, customer_satisfaction_rate: float) -> void:
 	customer_satisfaction_value.text = \

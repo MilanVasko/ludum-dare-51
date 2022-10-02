@@ -55,10 +55,10 @@ func is_fixing() -> bool:
 	return !is_travelling() && is_instance_valid(defect_to_fix)
 
 func select() -> void:
-	sprites.modulate.a = 0.5
+	$Selected.visible = true
 
 func unselect() -> void:
-	sprites.modulate.a = 1.0
+	$Selected.visible = false
 
 func go_and_fix(defect: Node2D) -> bool:
 	if !move_to(defect.global_position):
@@ -151,6 +151,3 @@ func find_path_to_impl(goal_a: Waypoint, goal_b: Waypoint, real_target: Vector2)
 
 func _on_sprite_clicked(_event: InputEventMouseButton) -> void:
 	get_tree().call_group("employee_click_subscriber", "_on_employee_selected", self)
-
-func is_selected() -> bool:
-	return sprites.modulate < 0.99

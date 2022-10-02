@@ -50,6 +50,7 @@ func _process(delta: float) -> void:
 	time_passed += delta
 	current_customer_satisfaction = min(current_customer_satisfaction - current_customer_satisfaction_deterioration_rate * delta, 1.0)
 	if current_customer_satisfaction < 0.0:
+		Global.seconds_lasted = time_passed
 		var err := get_tree().change_scene("res://game_over/game_over.tscn")
 		assert(err == OK)
 

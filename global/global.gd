@@ -5,6 +5,9 @@ enum DefectType {
 	REPAIR
 }
 
+# TODO: refactor this global variable someday?
+var seconds_lasted: float
+
 func _ready():
 	randomize()
 
@@ -21,7 +24,6 @@ func find_neighbour_waypoints(waypoints: Array, global_position: Vector2) -> Arr
 		return []
 
 	var neighbour_waypoint := find_neighbour_to_closest_waypoint(closest_waypoint, global_position)
-	print("Huh? ", neighbour_waypoint, ", ", closest_waypoint)
 	if neighbour_waypoint.global_position.x < closest_waypoint.global_position.x:
 		return [neighbour_waypoint, closest_waypoint]
 	return [closest_waypoint, neighbour_waypoint]
@@ -68,6 +70,11 @@ func format_number(value: float, precision: int) -> String:
 
 func format_rate(rate: float, precision: int) -> String:
 	return ("+" if rate > 0.0 else "") + format_percent(rate, precision)
+
+func format_time(time: float) -> String:
+	var seconds := int(time) % 60
+	var minutes := int(time / 60.0)
+	return zero_padding(minutes) + str(minutes) + ":" + zero_padding(seconds) + str(seconds)
 
 func zero_padding(value: int) -> String:
 	return "0" if value < 10 else ""

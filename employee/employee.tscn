@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://white_square.png" type="Texture" id=1]
 [ext_resource path="res://employee/employee.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://employee/lower_arm.tres" type="Texture" id=8]
 [ext_resource path="res://employee/upper_arm.tres" type="Texture" id=9]
 [ext_resource path="res://employee/upper_torso.tres" type="Texture" id=10]
+[ext_resource path="res://blank_rectangle.svg" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -2630,6 +2631,14 @@ texture = ExtResource( 1 )
 script = ExtResource( 3 )
 consume_input = true
 
+[node name="Selected" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0.658824, 0.117647, 1 )
+position = Vector2( 0, -100 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 200
+texture = ExtResource( 11 )
+
 [node name="Root" type="Position2D" parent="."]
 
 [node name="LowerTorso" type="Sprite" parent="Root"]
@@ -2673,7 +2682,7 @@ __meta__ = {
 [node name="UpperBackArm" type="Sprite" parent="Root/LowerTorso/UpperTorso"]
 self_modulate = Color( 0.054902, 0.376471, 0.219608, 1 )
 position = Vector2( 0, -80 )
-rotation = -0.189922
+rotation = -0.189921
 z_index = -1
 texture = ExtResource( 9 )
 centered = false
@@ -2703,7 +2712,7 @@ __meta__ = {
 [node name="UpperFrontArm" type="Sprite" parent="Root/LowerTorso/UpperTorso"]
 self_modulate = Color( 0.270554, 0.582031, 0.429753, 1 )
 position = Vector2( 0, -80 )
-rotation = 0.249098
+rotation = 0.249099
 z_index = 1
 texture = ExtResource( 9 )
 centered = false
@@ -2739,7 +2748,7 @@ __meta__ = {
 [node name="UpperBackLeg" type="Sprite" parent="Root"]
 self_modulate = Color( 0.0710449, 0.125603, 0.378906, 1 )
 position = Vector2( 0, -98 )
-rotation = -0.251222
+rotation = -0.251223
 scale = Vector2( 0.349881, 0.349881 )
 texture = ExtResource( 7 )
 centered = false

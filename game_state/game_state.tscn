@@ -3,7 +3,7 @@
 [ext_resource path="res://game_state/game_state.gd" type="Script" id=1]
 
 [sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 0 ), 0.0, 1.279, 0, 1, Vector2( 0.107843, 0.137931 ), 1.279, 0.533867, 1, 1, Vector2( 0.382353, 0.284483 ), 1.07671, 1.07671, 0, 0, Vector2( 1, 1 ), 1.15846, 0.0, 1, 0 ]
+_data = [ Vector2( 0, 0 ), 0.0, 2.63448, 0, 1, Vector2( 0.0719895, 0.189655 ), 2.63448, 0.423141, 1, 1, Vector2( 0.397959, 0.327586 ), 1.07671, 1.07671, 0, 0, Vector2( 1, 1 ), 1.11689, 0.0, 1, 0 ]
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]

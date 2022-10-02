@@ -2,7 +2,7 @@
 
 [ext_resource path="res://gui/gui.gd" type="Script" id=1]
 
-[node name="GUI" type="Control" groups=["customer_satisfaction_subscriber", "difficulty_subscriber", "employee_cost_subscriber", "money_subscriber", "time_subscriber"]]
+[node name="GUI" type="Control" groups=["customer_satisfaction_subscriber", "difficulty_subscriber", "employee_cost_subscriber", "money_subscriber", "no_employee_selected_subscriber", "time_subscriber"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -126,5 +126,20 @@ margin_bottom = 10.0
 text = "sadsadd
 dasdsd"
 valign = 1
+
+[node name="Warning" type="Panel" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -200.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="Warning"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "An employee must be selected to fix a crack!"
+align = 1
+valign = 1
+autowrap = true
 
 [connection signal="pressed" from="NewEmployee" to="." method="_on_new_employee_pressed"]

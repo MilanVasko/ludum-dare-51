@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://defect/defect.gd" type="Script" id=1]
 [ext_resource path="res://defect/cracks1.svg" type="Texture" id=2]
 [ext_resource path="res://clickable_sprite.gd" type="Script" id=3]
 [ext_resource path="res://defect/cracks2.svg" type="Texture" id=4]
 [ext_resource path="res://defect/cracks3.svg" type="Texture" id=5]
+[ext_resource path="res://blank_square.svg" type="Texture" id=6]
 
 [node name="Defect" type="Node2D" groups=["defect"]]
 z_index = -1
@@ -18,6 +19,11 @@ scale = Vector2( 0.395, 0.395 )
 texture = ExtResource( 2 )
 script = ExtResource( 3 )
 consume_input = true
+
+[node name="Indicator" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.878431, 0, 0, 1 )
+texture = ExtResource( 6 )
 
 [node name="ProgressBar" type="Node2D" parent="."]
 z_index = 100
