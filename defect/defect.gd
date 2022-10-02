@@ -13,6 +13,8 @@ func _ready() -> void:
 	var sprite := $Sprite
 	sprite.texture = textures[randi() % textures.size()]
 	sprite.modulate = texture_colors[randi() % texture_colors.size()]
+	
+	sprite.rotation_degrees = rand_range(0.0, 360.0)
 
 	progress_bar.visible = false
 	current_severity = severity
