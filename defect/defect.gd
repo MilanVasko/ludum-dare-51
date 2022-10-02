@@ -20,7 +20,7 @@ func _ready() -> void:
 
 	progress_bar.visible = false
 	current_severity = severity
-	get_tree().call_group("defect_life_subscriber", "_on_defect_spawned")
+	get_tree().call_group("defect_life_subscriber", "_on_defect_spawned", self)
 
 func _process(delta: float) -> void:
 	if visible_cooldown > 0.0:
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		progress_bar.value = 1.0 - (current_severity / severity)
 		current_severity -= delta
 		if current_severity <= 0.0:
-			get_tree().call_group("defect_life_subscriber", "_on_defect_fixed")
+			get_tree().call_group("defect_life_subscriber", "_on_defect_fixed", self)
 			queue_free()
 
 func _on_sprite_clicked(_event: InputEventMouseButton) -> void:

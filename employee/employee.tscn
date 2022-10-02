@@ -2619,7 +2619,7 @@ tracks/53/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 
-[node name="Employee" type="Node2D"]
+[node name="Employee" type="Node2D" groups=["defect_life_subscriber"]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

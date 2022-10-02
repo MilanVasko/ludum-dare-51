@@ -82,12 +82,12 @@ func spawn_employee() -> void:
 	employee_container.add_child(employee_instance)
 	employee_instance.global_position = spawn_point.global_position
 
-func _on_defect_spawned() -> void:
+func _on_defect_spawned(_defect: Node2D) -> void:
 	current_defects += 1
 	update_customer_satisfaction_rate()
 	assert(current_defects >= 0 && current_defects <= defect_spawn_count)
 
-func _on_defect_fixed() -> void:
+func _on_defect_fixed(_defect: Node2D) -> void:
 	current_defects -= 1
 	update_customer_satisfaction_rate()
 	assert(current_defects >= 0 && current_defects <= defect_spawn_count)

@@ -9,17 +9,16 @@ onready var sprites := $Root
 onready var animation_player := $AnimationPlayer
 
 var defect_to_fix: Node2D = null
+var next_defect_to_fix: Node2D = null
 var path_to_travel := []
 var current_travel_index := -1
 
 func _process(delta: float) -> void:
 	if !is_travelling():
-		animation_player.play("fix", -1, 4.0)
 		if defect_to_fix == null:
 			animation_player.play("rest")
 			return
-		if !is_instance_valid(defect_to_fix):
-			defect_to_fix = null
+		animation_player.play("fix", -1, 4.0)
 		return
 
 	if is_instance_valid(defect_to_fix) && !defect_to_fix.accepts_employee(self):
@@ -60,19 +59,27 @@ func select() -> void:
 func unselect() -> void:
 	$Selected.visible = false
 
-func go_and_fix(defect: Node2D) -> bool:
-	if !move_to(defect.global_position):
-		return false
-	defect_to_fix = defect
-	return true
+func _on_defect_fixed(defect: Node2D) -> void:
+	if defect == defect_to_fix:
+		defect_to_fix = null
+		if is_instance_valid(next_defect_to_fix):
+			go_and_fix(next_defect_to_fix)
+			next_defect_to_fix = null
 
-func move_to(global_target_position: Vector2) -> bool:
+func go_and_fix(defect: Node2D) -> void:
 	if is_fixing():
-		return false
+		next_defect_to_fix = defect
+		return
+	move_to(defect.global_position)
+	defect_to_fix = defect
+
+func move_to(global_target_position: Vector2) -> void:
+	if is_fixing():
+		return
 	defect_to_fix = null
 	path_to_travel = find_path_to(global_target_position)
 	current_travel_index = 0
-	return true
+	return
 
 func find_path_to(global_target_position: Vector2) -> Array:
 	var waypoints := get_tree().get_nodes_in_group("waypoint")
