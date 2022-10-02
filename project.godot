@@ -22,6 +22,8 @@ Global="*res://global/global.tscn"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/custom="res://gui/theme.tres"
+theme/custom_font="res://font/font.tres"
 
 [physics]
 
