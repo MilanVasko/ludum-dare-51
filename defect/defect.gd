@@ -43,10 +43,12 @@ func highlight_on_click() -> void:
 	visible_cooldown = 2.0
 
 func assign_employee(employee: Node2D) -> void:
+	if !accepts_employee(employee):
+		return
 	assigned_employee = employee
 	progress_bar.visible = true
+	get_tree().call_group("defect_life_subscriber", "_on_employee_assigned", self, employee)
 
 func accepts_employee(employee: Node2D) -> bool:
-	return assigned_employee == null || assigned_employee == employee
-
-
+	return (assigned_employee == null) || \
+		   (assigned_employee != null && assigned_employee == employee)

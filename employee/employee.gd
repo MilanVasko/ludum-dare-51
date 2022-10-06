@@ -3,8 +3,6 @@ extends Node2D
 const Waypoint = preload("res://waypoint/waypoint.gd")
 const SPEED := 350.0
 
-export(Global.DefectType) var target_defect_type: int
-
 onready var sprites := $Root
 onready var animation_player := $AnimationPlayer
 
@@ -19,12 +17,6 @@ func _process(delta: float) -> void:
 			animation_player.play("rest")
 			return
 		animation_player.play("fix", -1, 4.0)
-		return
-
-	if is_instance_valid(defect_to_fix) && !defect_to_fix.accepts_employee(self):
-		# someone else got there sooner
-		defect_to_fix = null
-		current_travel_index = -1
 		return
 
 	var target_position: Vector2 = path_to_travel[current_travel_index]
@@ -43,7 +35,7 @@ func _process(delta: float) -> void:
 	global_position += intended_movement
 
 func on_destination_reached() -> void:
-	if is_instance_valid(defect_to_fix) && defect_to_fix.accepts_employee(self):
+	if defect_to_fix != null && defect_to_fix.accepts_employee(self):
 		defect_to_fix.assign_employee(self)
 		unselect()
 
@@ -51,7 +43,7 @@ func is_travelling() -> bool:
 	return current_travel_index >= 0 && current_travel_index < path_to_travel.size()
 
 func is_fixing() -> bool:
-	return !is_travelling() && is_instance_valid(defect_to_fix)
+	return !is_travelling() && defect_to_fix != null
 
 func select() -> void:
 	$Selected.visible = true
@@ -59,10 +51,19 @@ func select() -> void:
 func unselect() -> void:
 	$Selected.visible = false
 
+func _on_employee_assigned(defect: Node2D, employee: Node2D) -> void:
+	if defect == defect_to_fix && employee != self:
+		# someone else got there sooner
+		defect_to_fix = null
+		current_travel_index = -1
+
 func _on_defect_fixed(defect: Node2D) -> void:
+	if defect == next_defect_to_fix:
+		next_defect_to_fix = null
+
 	if defect == defect_to_fix:
 		defect_to_fix = null
-		if is_instance_valid(next_defect_to_fix):
+		if next_defect_to_fix != null:
 			go_and_fix(next_defect_to_fix)
 			next_defect_to_fix = null
 

@@ -1,10 +1,5 @@
 extends Node
 
-enum DefectType {
-	RECEPTION,
-	REPAIR
-}
-
 # TODO: refactor this global variable someday?
 var seconds_lasted: float
 

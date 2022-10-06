@@ -28,7 +28,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_defect_clicked(defect: Node2D) -> void:
 	if selected_employee == null:
-		get_tree().call_group("no_employee_selected_subscriber", "_on_no_employee_selected")
+		get_tree().call_group("employee_warnings_subscriber", "_on_no_employee_selected")
+		return
+	if !defect.accepts_employee(selected_employee):
+		get_tree().call_group("employee_warnings_subscriber", "_on_employee_defect_fix_conflict")
 		return
 
 	defect.highlight_on_click()
