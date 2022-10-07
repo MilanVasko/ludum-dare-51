@@ -7,14 +7,7 @@ onready var customer_satisfaction_value = $TopPanel/Rows/CustomerSatisfaction/Va
 onready var money_value = $MoneyPanel/Money/Value
 onready var new_employee_button = $NewEmployee
 onready var difficulty_value = $DifficultyPanel/Value
-
-var warning_cooldown := -1.0
-
-func _process(delta: float) -> void:
-	if warning_cooldown > 0.0:
-		warning_cooldown -= delta
-		if warning_cooldown <= 0.0:
-			$Warning.visible = false
+onready var warning := $Warning
 
 func _on_employee_cost_changed(new_employee_cost: float) -> void:
 	new_employee_button.text = "+1 New employee (" + str(new_employee_cost) + " coins)"
@@ -26,15 +19,10 @@ func _on_time_updated(time_passed: float) -> void:
 	time_value.text = Global.format_time(time_passed)
 
 func _on_no_employee_selected() -> void:
-	show_warning("An employee must be selected to fix something!")
+	warning.show_warning("An employee must be selected to fix something!")
 
 func _on_employee_defect_fix_conflict() -> void:
-	show_warning("An employee is already fixing this!")
-
-func show_warning(warning: String) -> void:
-	$Warning.visible = true
-	warning_cooldown = 2.0
-	$Warning/Label.text = warning
+	warning.show_warning("An employee is already fixing this!")
 
 func _on_customer_satisfaction_updated(customer_satisfaction: float, customer_satisfaction_rate: float) -> void:
 	customer_satisfaction_value.text = \

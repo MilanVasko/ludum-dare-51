@@ -45,4 +45,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="on_sprite_clicked" from="Sprite" to="." method="_on_sprite_clicked"]

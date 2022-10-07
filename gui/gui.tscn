@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://gui/gui.gd" type="Script" id=1]
+[ext_resource path="res://gui/warning.gd" type="Script" id=2]
 
-[node name="GUI" type="Control" groups=["customer_satisfaction_subscriber", "difficulty_subscriber", "employee_cost_subscriber", "money_subscriber", "employee_warnings_subscriber", "time_subscriber"]]
+[node name="GUI" type="Control" groups=["customer_satisfaction_subscriber", "difficulty_subscriber", "employee_cost_subscriber", "employee_warnings_subscriber", "money_subscriber", "time_subscriber"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -133,6 +134,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -200.0
 margin_bottom = 100.0
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Warning"]
 anchor_right = 1.0
@@ -141,5 +143,8 @@ text = "An employee must be selected to fix a crack!"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="Timer" type="Timer" parent="Warning"]
+wait_time = 2.0
 
 [connection signal="pressed" from="NewEmployee" to="." method="_on_new_employee_pressed"]
